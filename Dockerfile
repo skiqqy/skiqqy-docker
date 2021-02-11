@@ -1,11 +1,12 @@
 FROM alpine:latest
 
 EXPOSE 80
+EXPOSE 8199
 
 # 1 Means dev version
 ENV DEV=0
 
-RUN apk update && apk add lighttpd wget git make gcc libc-dev bash
+RUN apk update && apk add lighttpd wget git make gcc libc-dev bash python3 py3-pip
 
 # Lighttpd Setup
 RUN mkdir -p /var/www/localhost/htdocs/stats /var/log/lighttpd /var/lib/lighttpd
