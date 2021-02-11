@@ -2,7 +2,7 @@
 # Run the API
 api () {
 	fuser -k 8199/tcp # Kill the api if it is running
-	./api.sh
+	./api.sh &
 }
 
 # Deploy Dev
@@ -21,6 +21,7 @@ dev () {
 # Production Deploy
 deploy () {
 	make
+	api
 	echo "Starting web Server"
 	/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
 	echo "Web server Closing"
